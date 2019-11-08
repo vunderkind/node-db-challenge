@@ -1,5 +1,3 @@
-
-Copy
 exports.up = function(knex, Promise) {
   return knex.schema
     .createTable('project', tbl => {
@@ -46,6 +44,10 @@ exports.up = function(knex, Promise) {
     })
 };
 
-exports.down = function(knex) {
-  
-};
+exports.down = function(knex, Promise) {
+    // drop in the opposite order
+    return knex.schema
+      .dropTableIfExists('task')
+      .dropTableIfExists('resource')
+      .dropTableIfExists('project')
+  };
