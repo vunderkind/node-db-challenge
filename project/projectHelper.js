@@ -8,7 +8,7 @@ module.exports = {
 }
 
 function find() {
-    return db('project');
+    return db('project', 'task');
 }
 
 function findById(id) {
@@ -18,7 +18,7 @@ function findById(id) {
 function findTasks(id) {
     return db('project')
     .join('task', 'project.id', 'task_id')
-    .select('project.name', 'project.description', 'task.name', 'task.description', 'task.notes')
+    .select('*')
     .where({'project.id':id})
     .orderBy('task_id');
 }
