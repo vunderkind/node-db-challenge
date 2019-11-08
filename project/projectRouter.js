@@ -18,11 +18,11 @@ router.get('/:id', (req, res) => {
   const { id } = req.params;
 
   Project.findById(id)
-  .then(scheme => {
-    if (scheme) {
-      res.json(scheme);
+  .then(project => {
+    if (project) {
+      res.json(project);
     } else {
-      res.status(404).json({ message: 'Could not find scheme with given id.' })
+      res.status(404).json({ message: 'Could not find Project with given id.' })
     }
   })
   .catch(err => {
