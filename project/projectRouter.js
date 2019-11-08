@@ -30,19 +30,19 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.get('/:id/steps', (req, res) => {
+router.get('/:id/tasks', (req, res) => {
   const { id } = req.params;
 
-  Project.findSteps(id)
+  Project.findTasks(id)
   .then(steps => {
     if (steps.length) {
       res.json(steps);
     } else {
-      res.status(404).json({ message: 'Could not find steps for given scheme' })
+      res.status(404).json({ message: 'Could not find tasks for this project' })
     }
   })
   .catch(err => {
-    res.status(500).json({ message: 'Failed to get steps' });
+    res.status(500).json({ message: 'Failed to get tasks. Sorry' });
   });
 });
 
